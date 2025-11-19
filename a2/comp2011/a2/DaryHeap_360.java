@@ -28,9 +28,9 @@ package comp2011.a2; // Don't change this line!
  * 3.
  * ...
  * 
- * My secret number is _________, I'm implementing a __-ary ___ (min/max) heap.
+ * My secret number is 360, I'm implementing a 4-ary min (min/max) heap.
  */
-public class DaryHeap_000<T extends Comparable<T>> { // Please replace 000 with your secret number!
+public class DaryHeap_360<T extends Comparable<T>> { // Please replace 000 with your secret number!
 
     public DaryHeap_000(int capacity) {
     }
@@ -80,3 +80,4 @@ public class DaryHeap_000<T extends Comparable<T>> { // Please replace 000 with 
     public void merge(DaryHeap_000<T> heap) {
     }
 }
+
