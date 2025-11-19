@@ -32,7 +32,7 @@ package comp2011.a2; // Don't change this line!
  */
 public class DaryHeap_360<T extends Comparable<T>> { // Please replace 000 with your secret number!
 
-    public DaryHeap_000(int capacity) {
+    public DaryHeap_360(int capacity) {
     }
 
     public void insert(T x) {
@@ -80,4 +80,5 @@ public class DaryHeap_360<T extends Comparable<T>> { // Please replace 000 with 
     public void merge(DaryHeap_000<T> heap) {
     }
 }
+
 
