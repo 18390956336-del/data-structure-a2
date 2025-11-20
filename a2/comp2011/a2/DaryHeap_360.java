@@ -32,9 +32,9 @@ package comp2011.a2; // Don't change this line!
  */
 public class DaryHeap_360<T extends Comparable<T>> {// Please replace 000 with your secret number!
 
-    int capacity;
-    T[] heap;
-    int size;
+    private int capacity;
+    private T[] heap;
+    private int size;
 
     public DaryHeap_360(int capacity) {
         this.capacity=capacity;
@@ -52,18 +52,20 @@ public class DaryHeap_360<T extends Comparable<T>> {// Please replace 000 with y
         size++;
     }
 
-    // Running time: O( ).
+    // Running time: O(log n).
     public T removeRoot() {
         if(size==0){
             return null;
         }
 
+        T root=heap[0];
         heap[0]=heap[size-1];
         size--;
-
+        down(0);
+        return root;
     }
 
-    // Running time: O(d).
+    // Running time: O(log n).
     private void up(int c) {
         int curNode=c;
         int dadNode=(curNode-1)/4;
@@ -76,7 +78,7 @@ public class DaryHeap_360<T extends Comparable<T>> {// Please replace 000 with y
         }
     }
 
-    // Running time: O( ).
+    // Running time: O(log n).
     private void down(int ind) {
         int curNode=ind;
         T minT;
@@ -93,6 +95,10 @@ public class DaryHeap_360<T extends Comparable<T>> {// Please replace 000 with y
                     min_ind=curNode*4+i;
                 }
             }
+            T temp = heap[curNode];
+            heap[curNode] = heap[min_ind];
+            heap[min_ind] = temp;
+            curNode=min_ind;
         }
     }
 
@@ -120,9 +126,22 @@ public class DaryHeap_360<T extends Comparable<T>> {// Please replace 000 with y
      * 3.
      * ...
      *
-     * Running time: O( ).
+     * Running time: O(m+n). ("m+n" means that this.size+heap.size)
      */
     public void merge(DaryHeap_360<T> heap) {
+        T[] newheap=(T[]) new Comparable[this.capacity+heap.capacity];
+        this.capacity=this.capacity+heap.capacity;
+        for(int i=0;i<this.size;i++){
+            newheap[i]=this.heap[i];
+        }
+        for(int i=this.size;i<this.size+heap.size;i++){
+            newheap[i]=heap.heap[i-this.size];
+        }
+        this.heap=newheap;
+        this.size=this.size+heap.size;
+        for (int i = (this.size - 1) / 4; i >= 0; i--) {
+            this.down(i);
+        }
     }
 }
 
