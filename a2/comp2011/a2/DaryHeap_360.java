@@ -30,25 +30,70 @@ package comp2011.a2; // Don't change this line!
  * 
  * My secret number is 360, I'm implementing a 4-ary min (min/max) heap.
  */
-public class DaryHeap_360<T extends Comparable<T>> { // Please replace 000 with your secret number!
+public class DaryHeap_360<T extends Comparable<T>> {// Please replace 000 with your secret number!
+
+    int capacity;
+    T[] heap;
+    int size;
 
     public DaryHeap_360(int capacity) {
+        this.capacity=capacity;
+        size=0;
+        heap=(T[]) new Comparable[capacity];
     }
 
     public void insert(T x) {
+        if(size>=capacity){
+            throw new IllegalStateException();
+        }
+
+        heap[size]=x;
+        up(size);
+        size++;
     }
 
     // Running time: O( ).
     public T removeRoot() {
-        return null;
+        if(size==0){
+            return null;
+        }
+
+        heap[0]=heap[size-1];
+        size--;
+
     }
 
-    // Running time: O( ).
+    // Running time: O(d).
     private void up(int c) {
+        int curNode=c;
+        int dadNode=(curNode-1)/4;
+        while(dadNode>=0&&heap[curNode].compareTo(heap[dadNode])<0){
+            T temp=heap[curNode];
+            heap[curNode]=heap[dadNode];
+            heap[dadNode]=temp;
+            curNode=dadNode;
+            dadNode=(curNode-1)/4;
+        }
     }
 
     // Running time: O( ).
     private void down(int ind) {
+        int curNode=ind;
+        T minT;
+        int min_ind;
+        while(curNode*4+1<size){
+            minT=heap[curNode*4+1];
+            min_ind=curNode*4+1;
+            for(int i=2;i<=4;i++){
+                if(curNode*4+i>=size){
+                    break;
+                }
+                if(heap[curNode*4+i].compareTo(minT)<0){
+                    minT=heap[curNode*4+i];
+                    min_ind=curNode*4+i;
+                }
+            }
+        }
     }
 
     /**
@@ -77,7 +122,7 @@ public class DaryHeap_360<T extends Comparable<T>> { // Please replace 000 with 
      *
      * Running time: O( ).
      */
-    public void merge(DaryHeap_000<T> heap) {
+    public void merge(DaryHeap_360<T> heap) {
     }
 }
 
