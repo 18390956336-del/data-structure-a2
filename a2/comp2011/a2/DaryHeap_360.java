@@ -11,7 +11,7 @@ package comp2011.a2; // Don't change this line!
  * VERY IMPORTANT.
  * 
  * I've sought help from the following GenAI:
- * 1.
+ * 1.GPT-4.1
  * 2.
  * 3.
  * ...
@@ -95,9 +95,9 @@ public class DaryHeap_360<T extends Comparable<T>> {// Please replace 000 with y
                     min_ind=curNode*4+i;
                 }
             }
-            T temp = heap[curNode];
-            heap[curNode] = heap[min_ind];
-            heap[min_ind] = temp;
+            T temp=heap[curNode];
+            heap[curNode]=heap[min_ind];
+            heap[min_ind]=temp;
             curNode=min_ind;
         }
     }
@@ -109,7 +109,7 @@ public class DaryHeap_360<T extends Comparable<T>> {// Please replace 000 with y
      * VERY IMPORTANT.
      *
      * I've sought help from the following GenAI:
-     * 1.
+     * 1.GPT-4.1
      * 2.
      * 3.
      * ...
@@ -139,7 +139,7 @@ public class DaryHeap_360<T extends Comparable<T>> {// Please replace 000 with y
         }
         this.heap=newheap;
         this.size=this.size+heap.size;
-        for (int i = (this.size - 1) / 4; i >= 0; i--) {
+        for(int i=(this.size-1)/4;i>=0;i--){
             this.down(i);
         }
     }

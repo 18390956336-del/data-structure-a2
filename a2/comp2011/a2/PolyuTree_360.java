@@ -195,17 +195,17 @@ public class PolyuTree_360 { // Please replace 000 with your secret number!
             return 0;
         }
 
-        int leftSize = getSize(root.lc, diff);
-        int rightSize = getSize(root.rc, diff);
+        int leftSize=getSize(root.lc, diff);
+        int rightSize=getSize(root.rc, diff);
 
         int curdiff;
-        if(leftSize <= rightSize){
-            curdiff = rightSize - leftSize;
+        if(leftSize<=rightSize){
+            curdiff=rightSize - leftSize;
         }
         else{
-            curdiff = leftSize - rightSize;
+            curdiff=leftSize-rightSize;
         }
-        if(curdiff > diff[0]) {
+        if(curdiff>diff[0]){
             diff[0]=curdiff;
         }
         return leftSize+rightSize+1;
